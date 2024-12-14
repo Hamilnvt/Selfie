@@ -32,15 +32,15 @@ export default function Header() {
 
   return (
     <>
-    <div className="relative mb-[120px] md:mb-[70px]">
+    <div className={`${colors.MAIN_BG_DARK} relative mb-[120px] md:mb-[70px]`}>
       <div className="flex flex-col">
         <nav className={`z-10 px-4 flex w-screen justify-between fixed top-0 left-0 right-0 ${showNotification ? "border-b" : "border-b-2 md:rounded-b-xl"} ${colors.MAIN_BG_MEDIUM}`}>
           <div className="relative flex">
-            <Link to="/home" className={`self-center text-3xl px-1 font-semibold ${colors.MAIN_HOVER_TEXT} 
-                                         ${location.pathname === "/home" ? colors.MAIN_BG_LIGHT+" text-black h-fit rounded" : "text-white"}`}>
+            <Link to="/home" className={`self-center text-3xl px-1 font-semibold ${colors.INVERTED_HOVER_TEXT} 
+                                         ${location.pathname === "/home" ? colors.MAIN_BG_LIGHT+" "+colors.MAIN_TEXT_DARK+" h-fit rounded" : colors.MAIN_TEXT_LIGHT}`}>
               Selfie
             </Link>
-            <div className="w-full text-sm font-semibold left-full flex items-center ml-4">
+            <div className={`${colors.MAIN_TEXT_LIGHT} w-full text-sm font-semibold left-full flex items-center ml-4`}>
               {currentDate.format("dddd D MMMM YYYY")}
             </div>
           </div>
@@ -54,7 +54,7 @@ export default function Header() {
           <img src={user?.picture || "https://img.freepik.com/premium-photo/sloth-touches-camera-taking-selfie-funny-selfie-portrait-animal_323015-1968.jpg?w=360"}
                className={`self-center rounded-full h-12 bg-gray-50 ${location.pathname === "/profile" ? "border-4 rounded-full "+colors.MAIN_BORDER_LIGHT : "border-0"}`} alt="Selfie logo" onClick={() => navigate("/profile")}/>
         </nav>
-        <div className="fixed top-[100px] md:top-[50px] w-full">
+        <div className={`${colors.MAIN_BG_DARK} fixed top-[100px] md:top-[50px] w-full`}>
           <NotificationsBar/>
         </div>
       </div>

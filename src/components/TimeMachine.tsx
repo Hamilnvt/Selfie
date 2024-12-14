@@ -2,8 +2,8 @@ import {Column} from "./atoms/Column";
 import {TextComponent} from "./atoms/Text";
 import {Input, VStack} from "@chakra-ui/react";
 import {background} from "../scripts/COLORS";
-import Header from "./Header";
 import React, {useContext} from "react";
+import Header from "./Header.js";
 import GlobalContext from "../context/GlobalContext";
 
 export default function TimeMachine() {

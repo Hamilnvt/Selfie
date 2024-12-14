@@ -1,5 +1,6 @@
 import GlobalContext from "../context/GlobalContext.js"
 import { useContext } from "react"
+import * as colors from "../scripts/COLORS.js"
 
 export default function ShowCalendarTypeComp()
 {
@@ -10,8 +11,8 @@ export default function ShowCalendarTypeComp()
   }
 
   return (
-  <div className="pb-2 flex items-center space-x-2">
-    <select className="appearance-none text-center px-2 rounded py-1" defaultValue={shownCalendarType} onChange={handleChangeCalendarType}>
+  <div className={`${colors.MAIN_TEXT_LIGHT} pb-2 flex items-center space-x-2`}>
+    <select className={`${colors.BUTTON_BG} appearance-none text-center px-2 rounded py-1`} defaultValue={shownCalendarType} onChange={handleChangeCalendarType}>
       <option value="tutti">Tutti</option>
       <option value="eventi">Eventi</option>
       <option value="attività">Attività</option>

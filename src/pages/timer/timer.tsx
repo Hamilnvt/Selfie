@@ -25,10 +25,12 @@ import Header from "../../components/Header";
 import {getLastTimer, postTimer, putTimer} from "../../API/timer";
 import GlobalContext from "../../context/GlobalContext";
 import {Timer} from "../../API/model/timer";
+import useCheckForUser from "../../hooks/useCheckForUser.js"
 
-export type WorkMode = "study" | "pause" | "idle";
+type WorkMode = "study" | "pause" | "idle";
 
 const TimerPage = () => {
+    useCheckForUser()
     const {user} = useContext(GlobalContext);
 
     const initialSeconds: number = 40 * 60; // 40 * 60
@@ -67,7 +69,7 @@ const TimerPage = () => {
         console.log(`currentTime => ${currentTime}`);
 
         // @ts-ignore
-        getLastTimer({token: user.token}).then(data => {
+        getLastTimer({token: user?.token}).then(data => {
                 const timer: Timer = data?.data || {};
                 const {
                     cycles,
@@ -169,7 +171,7 @@ const TimerPage = () => {
 
         postTimer({
             // @ts-ignore
-            token: user.token,
+            token: user?.token,
             data: {
                 cycles: cycles,
                 studyMinutes: studyMinutes,
@@ -194,7 +196,7 @@ const TimerPage = () => {
         putTimer({
             id: currentTimer?._id || "",
             // @ts-ignore
-            token: user.token,
+            token: user?.token,
             data: {
                 mode: 'idle',
             }
@@ -214,7 +216,7 @@ const TimerPage = () => {
             putTimer({
                 id: currentTimer?._id || "",
                 // @ts-ignore
-                token: user.token,
+                token: user?.token,
                 data: {
                     mode: "pause",
                     timestampEnd: (timestampEnd || 0) - (getStudySeconds() * 1000 - prevSeconds),
@@ -231,7 +233,7 @@ const TimerPage = () => {
                 putTimer({
                     id: currentTimer?._id || "",
                     // @ts-ignore
-                    token: user.token,
+                    token: user?.token,
                     data: {
                         mode: "study",
                         counter: currentCycle + 1,
@@ -258,7 +260,7 @@ const TimerPage = () => {
         putTimer({
             id: currentTimer?._id || "",
             // @ts-ignore
-            token: user.token,
+            token: user?.token,
             data: {
                 mode: currentMode,
                 timestampEnd: (timestampEnd || 0) + secondsToAdd,
@@ -281,7 +283,7 @@ const TimerPage = () => {
         putTimer({
             id: currentTimer?._id || "",
             // @ts-ignore
-            token: user.token,
+            token: user?.token,
             data: {
                 mode: currentMode,
                 counter: currentCycle + 1,
@@ -327,7 +329,7 @@ const TimerPage = () => {
                     putTimer({
                         id: currentTimer?._id || "",
                         // @ts-ignore
-                        token: user.token,
+                        token: user?.token,
                         data: {
                             mode: "study",
                             counter: currentCycle + 1,
@@ -346,7 +348,7 @@ const TimerPage = () => {
                     putTimer({
                         id: currentTimer?._id || "",
                         // @ts-ignore
-                        token: user.token,
+                        token: user?.token,
                         data: {
                             mode: "pause",
                             counter: currentCycle + 1,

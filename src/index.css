@@ -23,12 +23,6 @@ code {
     monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-    html {
-        color-scheme: dark;
-    }
-}
-
 .study-time { 
     width: 100px; 
     height: 100px; 

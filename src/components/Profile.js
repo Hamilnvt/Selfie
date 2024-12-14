@@ -9,6 +9,7 @@ import axios from "axios"
 import { modifyUser } from "../API/profile.js"
 import { validateModifiedUser } from "../scripts/userValidators.js"
 import useCheckForUser from "../hooks/useCheckForUser.js"
+import * as colors from "../scripts/COLORS.js"
 import dayjs from "dayjs"
 
 const Profile = () => {
@@ -128,7 +129,7 @@ const Profile = () => {
   }
 
   return (
-      <>
+      <div className={`${colors.MAIN_BG_DARK}`}>
       <Header/>
 
       {modifyingState ?
@@ -163,7 +164,7 @@ const Profile = () => {
           </>
         }
       </div>
-      </>
+      </div>
   );
 };
 

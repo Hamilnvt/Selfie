@@ -2,11 +2,15 @@ import {useContext, useEffect, useState} from "react";
 import GlobalContext from "../context/GlobalContext";
 import {getNotes} from "../API/note";
 import {NoteModel} from "../API/model/note";
-import {MAIN_BORDER_LIGHT} from "../scripts/COLORS";
-import {NoteEntry} from "./Home";
+import * as colors from "../scripts/COLORS";
+import NoteEntry from "./NoteEntry.js";
 import dayjs from "dayjs";
+import useCheckForUser from "../hooks/useCheckForUser.js"
 
 export const NotesView = () => {
+    
+    useCheckForUser()
+
     const {user} = useContext(GlobalContext) || {};
 
     const [notes, setNotes] = useState<NoteModel[]>([]);
@@ -32,14 +36,14 @@ export const NotesView = () => {
 
     return (
         <div
-            className={`${MAIN_BORDER_LIGHT} w-screen h-[620px] h-fit p-6 md:basis-1/2 overflow-auto overscroll-none`}
+            className={`${colors.MAIN_BG_DARK} ${colors.MAIN_BORDER_LIGHT} w-screen h-screen p-6 md:basis-1/2 overflow-auto overscroll-none`}
             style={{scrollbarWidth: "none"}}>
             <div className="flex flex-col justify-center items-center w-full">
                 {(sortedNotes || [])?.length === 0 ?
-                    <>
+                    <div className={`${colors.MAIN_TEXT_LIGHT}`}>
                         <p className="p-6 text-4xl text-center">Non hai mai creato una nota.</p>
                         <p className="p-6 text-4xl text-center">Vai nella sezione dedicata.</p>
-                    </>
+                    </div>
                     :
                     <div> {(sortedNotes || [])?.map(n => <NoteEntry key={n._id} note={n}/>)} </div>
                 }

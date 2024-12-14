@@ -27,12 +27,12 @@ const validateEmailEmpty = (email) => {
 
 const validateEmailAt = (email) => {
   let index = email.indexOf('@')
-  if (index == -1) return "Email non valida: manca la chioccioletta"
+  if (index === -1) return "Email non valida: manca la chioccioletta"
 }
 
 const validateEmailDot = (email) => {
   let index = email.indexOf('.')
-  if (index == -1) return "Email non valida: manca il punto"
+  if (index === -1) return "Email non valida: manca il punto"
 }
 
 const validateEmailAtBeforeDot = (email) => {

@@ -9,7 +9,7 @@ import {deleteNote, getNotes} from "../../API/note";
 import {NoteModel} from "../../API/model/note";
 import GlobalContext from "../../context/GlobalContext";
 import {NoteCard} from "../../components/molecoles/NoteCard";
-import Header from "../../components/Header";
+import Header from "../../components/Header.js";
 import {VStack} from "@chakra-ui/react";
 import {TextComponent} from "../../components/atoms/Text";
 

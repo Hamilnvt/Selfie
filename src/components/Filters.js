@@ -38,7 +38,7 @@ export default function Filters()
   }
 
   return (
-  <div className="flex items-center">
+  <div className={`${colors.MAIN_TEXT_LIGHT} flex items-center`}>
     { !showFilters ?
       <span onClick={() => setShowFilters(true)} className="-translate-y-1 cursor-pointer material-symbols-outlined">filter_alt</span>
       :

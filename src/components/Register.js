@@ -59,9 +59,9 @@ export default function Register()
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center ">
+    <div className={`${colors.MAIN_BG_DARK} min-h-screen flex items-center justify-center`}>
       <div className="p-6 rounded w-full max-w-md">
-        <h2 className="text-2xl mb-6 text-center">Registrazione Utente</h2>
+        <h2 className={`${colors.MAIN_TEXT_LIGHT} text-2xl mb-6 text-center`}>Registrazione Utente</h2>
         { error && <p className={`text-center p-1 mt-10 mb-4 flex border ${colors.MAIN_BORDER_LIGHT} justify-center -translate-y-3 ${colors.MAIN_TEXT_LIGHT} ${colors.CALENDAR_BG_DARK}`}>{error}</p> }
         <form onKeyPress={(e) => {if (e.key === "Enter") handleSubmit()}}>
           <div className="mb-4">
@@ -116,7 +116,7 @@ export default function Register()
           <Button click={handleSubmit} label="Registrati" otherCss="w-full py-2"/>
         </form>
         <div className="flex flex-col items-center space-y-2 mt-4">
-          <p className="mt-4 text-center">Hai già un account?</p>
+          <p className={`${colors.MAIN_TEXT_LIGHT} mt-4 text-center`}>Hai già un account?</p>
           <Button label="Esegui l'accesso!" click={() => navigate("/login")}/>
         </div>
       </div>

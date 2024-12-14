@@ -152,7 +152,7 @@ const Calendar = () => {
 
   return (
   <>
-  <div className="flex flex-col">
+  <div className={`${colors.MAIN_BG_DARK} flex flex-col`}>
   <Header/>
 
     <div className="md:flex md:justify-around">
@@ -166,10 +166,10 @@ const Calendar = () => {
         <div className="flex flex-col md:flex-none md:mx-3">
           <div>
             <div className="flex justify-between items-center justify-between">
-              <button onClick={goPrevMonth} className="text-5xl -translate-y-1 font-bold">‹</button>
+              <button onClick={goPrevMonth} className={`${colors.MAIN_TEXT_LIGHT} text-5xl -translate-y-1 font-bold`}>‹</button>
               <div>
                 { selectingNewDate ?
-                  <div className="flex justify-center">
+                  <div className={`${colors.MAIN_TEXT_LIGHT} flex justify-center`}>
                     <div className="p-1 flex space-x-2 mr-4">
                       <select className={`appearance-none text-center px-2 rounded ${colors.BUTTON_BG}`} name="day" onChange={handleChangeNewDate} defaultValue={selectedDay.date()}>
                         { Array.from({ length: dayjs({...newDate}).daysInMonth() }, (_, i) => i+1).map(day => <option className="" key={day} value={day}>{day}</option>) }
@@ -185,15 +185,15 @@ const Calendar = () => {
                     <button className="ml-3 material-symbols-outlined" onClick={() => setSelectingNewDate(false)}>close</button>
                   </div>
                   :
-                  <h2 className="text-4xl text-center font-bold cursor-pointer" title="Vai a oggi" onClick={() => setSelectingNewDate(true)}>
+                  <h2 className={`${colors.MAIN_TEXT_LIGHT} text-4xl text-center font-bold cursor-pointer`} title="Vai a oggi" onClick={() => setSelectingNewDate(true)}>
                     {MonthFormattedStringMMMM(calendarDate)} {calendarYear}
                   </h2>
                 }
               </div>
-              <button onClick={goNextMonth} className="-translate-y-1 text-5xl font-bold">›</button>
+              <button onClick={goNextMonth} className={`${colors.MAIN_TEXT_LIGHT} -translate-y-1 text-5xl font-bold`}>›</button>
             </div>
             <div className="grid grid-cols-7 gap-1 text-lg text-center">
-              {daysOfWeek.map((day, index) => <div key={index} className="font-semibold">{day}</div> )}
+              {daysOfWeek.map((day, index) => <div key={index} className={`${colors.MAIN_TEXT_LIGHT} font-semibold`}>{day}</div> )}
               {calendarMonthDates.map((date, index) => <DayTile key={index} day_date={date} events={allEventsToDisplay.filter(e => dayjs(e.begin).startOf("day").isSame(date.startOf("day")))} index={index} last_day_of_month={calendarMonthDates.length-trailingDays} height={day_tile_height()}/>)}
             </div>
           </div>

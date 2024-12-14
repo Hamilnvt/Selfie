@@ -1,3 +1,10 @@
+//[TODO]
+// - come collego le note sulla home alle note in Note? Quando clicco sulla nota nella home
+// - non funziona l'eliminazione delle note
+// - currentDate / currentTime
+// - info nel profilo
+// - colori in EventsList e eventModal
+
 import GlobalContext from "../context/GlobalContext.js"
 import useCheckForUser from "../hooks/useCheckForUser.js"
 import Header from "../components/Header.js"
@@ -157,46 +164,15 @@ const EventsView = ({tasks}) => {
 
     return (
         <div
-            className={`${colors.MAIN_BORDER_LIGHT} w-screen h-[620px] h-fit p-6 md:basis-1/2 overflow-auto overscroll-none`}
+            className={`${colors.MAIN_BG_DARK} ${colors.MAIN_BORDER_LIGHT} w-screen h-screen p-6 md:basis-1/2 overflow-auto overscroll-none`}
             style={{scrollbarWidth: "none"}}>
             <div className="flex flex-col justify-center items-center w-full">
                 {limitedEvents.length === 0 ?
-                    <p className="p-6 text-4xl text-center">Non ci sono {tasks ? "attività" : "eventi"} per i prossimi
+                    <p className={`${colors.MAIN_TEXT_LIGHT} p-6 text-4xl text-center`}>Non ci sono {tasks ? "attività" : "eventi"} per i prossimi
                         giorni</p>
                     :
                     <div> {limitedEvents.map((e, i) => <EventEntry key={i} event={e}/>)} </div>
                 }
-            </div>
-        </div>
-    )
-}
-
-export const NoteEntry = ({note}) => {
-    const navigate = useNavigate()
-
-    const goToNote = (n) => {
-        alert("TODO")
-        navigate("/notes")
-    }
-
-    return (
-        <div className={`w-screen px-3`}>
-            <div className={`flex flex-col border ${colors.MAIN_BORDER_LIGHT} rounded-lg overflow-hidden mb-4`}
-                 style={{scrollbarWidth: "none"}}>
-                <div className={`py-2 ${colors.MAIN_BG_DARK}`}>
-                    <div className="flex flex-col items-center">
-                        <div className={`mb-1 ${colors.MAIN_TEXT_LIGHT}`}>
-                            <div className="flex items-center space-x-2">
-                                <span
-                                    className="text-xl font-bold cursor-pointer hover:underline underline-offset-4 w-fit"
-                                    onClick={goToNote}>{truncateLongText(note.title, 50)}</span>
-                            </div>
-                        </div>
-                        <div className="flex flex-col justify-center">
-                            <span className="text-center">{truncateLongText(note.content, 200)}</span>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     )
@@ -313,18 +289,18 @@ const PomodoroView = () => {
         const update_diff = dayjs(b.timestampStart).diff(dayjs(a.timestampStart))
         const create_diff = dayjs(b.timestampStart).diff(dayjs(a.timestampStart))
         return update_diff !== 0 ? update_diff : create_diff
-    })
+    }).slice(0, 5)
 
     return (
         <div
-            className={`${colors.MAIN_BORDER_LIGHT} w-screen h-[620px] h-fit p-6 md:basis-1/2 overflow-auto overscroll-none`}
+            className={`${colors.MAIN_BORDER_LIGHT} w-screen h-screen p-6 md:basis-1/2 overflow-auto overscroll-none`}
             style={{scrollbarWidth: "none"}}>
             <div className="flex flex-col justify-center items-center w-full">
                 {sortedPomodoros.length === 0 ?
-                    <>
+                    <div className={`${colors.MAIN_TEXT_LIGHT}`}>
                         <p className="p-6 text-4xl text-center">Non hai mai fatto un Pomodoro.</p>
                         <p className="p-6 text-4xl text-center">Vai nella sezione dedicata.</p>
-                    </>
+                    </div>
                     :
                     <div> {sortedPomodoros.map(p => <PomodoroEntry key={p._id} pomodoro={p}/>)} </div>
                 }
@@ -366,7 +342,7 @@ export default function Home() {
     const formatViewDescription = (desc) => {
         const [part1, part2] = desc.split(' ')
         return (
-            <div className="flex flex-col leading-none">
+            <div className={`${colors.MAIN_TEXT_LIGHT} flex flex-col leading-none`}>
                 <span>{part1}</span>
                 <span>{part2}</span>
             </div>
@@ -374,12 +350,12 @@ export default function Home() {
     }
 
     return (
-        <>
+        <div className={`${colors.MAIN_BG_DARK}`}>
             <Header/>
 
-            <div className="overflow-auto" style={{scrollbarWidth: "none"}}>
+            <div className={`${colors.MAIN_BG_DARK} overflow-auto`} style={{scrollbarWidth: "none"}}>
                 <div className="w-screen pb-6 border-b-2 flex text-5xl md:text-6xl justify-around md:space-x-8">
-                    <p className="md:pl-10 select-none" onClick={change_view_left}>‹</p>
+                    <p className={`${colors.MAIN_TEXT_LIGHT} md:pl-10 select-none`} onClick={change_view_left}>‹</p>
                     <div
                         className="md:w-full translate-y-[5px] flex items-center justify-center space-x-4 md:space-x-16 text-center">
                         {views.names.map((v, i) => <span key={i} onClick={() => setCurrentViewIndex(i)}
@@ -387,10 +363,10 @@ export default function Home() {
               {formatViewDescription(views.descs[i])}
           </span>)}
                     </div>
-                    <p className="md:pr-10 select-none" onClick={change_view_right}>›</p>
+                    <p className={`${colors.MAIN_TEXT_LIGHT} md:pr-10 select-none`} onClick={change_view_right}>›</p>
                 </div>
                 {views.tags[currentViewIndex]}
             </div>
-        </>
+        </div>
     )
 }

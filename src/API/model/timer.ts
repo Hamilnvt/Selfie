@@ -1,5 +1,6 @@
 import {BaseResponse} from "./BaseResponse";
-import {WorkMode} from "../../pages/timer/timer";
+
+type WorkMode = "study" | "pause" | "idle";
 
 export interface Timer {
     _id?: string;
