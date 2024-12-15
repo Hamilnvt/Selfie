@@ -22,14 +22,14 @@ export default function EventsList({ events }) {
 
   return (
     <>
-    <div className={`${colors.CALENDAR_BG_MEDIUM} h-screen md:h-full rounded-lg`}>
+    <div className={`${colors.MAIN_TEXT_LIGHT} ${colors.CALENDAR_BG_MEDIUM} h-screen md:h-full rounded-lg`}>
         <header className={`border-b rounded-t-lg pt-px`}>
           <div className="pb-2 text-center items-center flex space-x-4 justify-between items-center mx-4 mt-2">
             <button type="button" onClick={openModal}
                     className={`h-12 w-12 material-symbols-outlined text-white text-4xl border-2 rounded-full hover:bg-white ${colors.INVERTED_HOVER_TEXT}`}
                     title="crea evento"> Add 
             </button>
-            <div className="flex flex-col">
+            <div className={`${colors.MAIN_TEXT_LIGHT} flex flex-col`}>
               <p className={`${showEventModal ? "text-left" : "text-center"} text-xl`}>{selectedDay.format("dddd")}</p>
               <p className="text-xl">{selectedDay.format("D MMMM YYYY")}</p>
             </div>

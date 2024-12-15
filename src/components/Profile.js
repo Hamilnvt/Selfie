@@ -129,7 +129,7 @@ const Profile = () => {
   }
 
   return (
-      <div className={`${colors.MAIN_BG_DARK}`}>
+      <div className={`h-screen ${colors.MAIN_BG_DARK}`}>
       <Header/>
 
       {modifyingState ?

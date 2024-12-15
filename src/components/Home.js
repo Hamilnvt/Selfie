@@ -1,9 +1,7 @@
 //[TODO]
-// - come collego le note sulla home alle note in Note? Quando clicco sulla nota nella home
+// - Quando clicco sulla nota nella home, qual è il path in cui c'è quella nota?
 // - non funziona l'eliminazione delle note
 // - currentDate / currentTime
-// - info nel profilo
-// - colori in EventsList e eventModal
 
 import GlobalContext from "../context/GlobalContext.js"
 import useCheckForUser from "../hooks/useCheckForUser.js"

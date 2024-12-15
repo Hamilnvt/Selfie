@@ -9,7 +9,7 @@ export default function ProfilePreview({ user, modifying }) {
   var { allEvents, currentDate } = useContext(GlobalContext)
 
   return (
-    <>
+    <div className={colors.MAIN_BG_DARK}>
     <div className="flex justify-center items-center min-h-80">
       <div className={`${colors.MAIN_BG_MEDIUM} p-6 rounded-lg w-full max-w-sm`}>
         <div className="flex items-center space-x-4">
@@ -30,22 +30,14 @@ export default function ProfilePreview({ user, modifying }) {
         </div>
         { !modifying && <div className="mt-2">
           <div className={`${colors.MAIN_TEXT_LIGHT} font-semibold text-lg`}>Info Calendario:</div>
-          <ul className={`${colors.MAIN_TEXT_LIGHT} border-b pl-4 mb-2 list-disc`}>
+          <ul className={`${colors.MAIN_TEXT_LIGHT} pl-4 mb-2 list-disc`}>
             <li>Voci nel Calendario: {allEvents.length}</li>
             <li>Eventi: {allEvents.filter(e => !e.isTask).length} (passati: {allEvents.filter(e => !e.isTask && dayjs(e.end).isBefore(currentDate)).length})</li>
             <li>Attività: {allEvents.filter(e => e.isTask).length} (completate: {allEvents.filter(e => e.isTask && e.isTask.completed).length})</li>
           </ul>
-          <div className={`${colors.MAIN_TEXT_LIGHT} font-semibold text-lg`}>Info Note:</div>
-          <ul className={`${colors.MAIN_TEXT_LIGHT} border-b pl-4 mb-2 list-disc`}>
-            <li>Note totali: TODO</li>
-          </ul>
-          <div className={`${colors.MAIN_TEXT_LIGHT} font-semibold text-lg`}>Info Pomodoro:</div>
-          <ul className={`${colors.MAIN_TEXT_LIGHT} pl-4 list-disc`}>
-            <li>Pomodori totali: TODO</li>
-          </ul>
         </div>}
       </div>
     </div>
-    </>
+    </div>
   )
 }

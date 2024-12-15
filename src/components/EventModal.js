@@ -573,7 +573,7 @@ export default function EventModal() {
   //}, [formData])
 
   return (
-    <div onKeyPress={e => { if(e.key === 'Enter') handleSubmit()}} className={`h-screen md:h-full max-w-auto ${colors.CALENDAR_BG_DARK} w-100 border ${colors.MAIN_BORDER_DARK} rounded-xl`}>
+    <div onKeyPress={e => { if(e.key === 'Enter') handleSubmit()}} className={`${colors.MAIN_TEXT_LIGHT} h-screen md:h-full max-w-auto ${colors.CALENDAR_BG_DARK} w-100 border ${colors.MAIN_BORDER_DARK} rounded-xl`}>
       <header className={`${colors.CALENDAR_BG_MEDIUM} px-4 py-1 pb-6 flex rounded-t-lg justify-between items-start`}>
         <div className="px-3"></div>
         <div className="flex flex-col justify-center items-center">
