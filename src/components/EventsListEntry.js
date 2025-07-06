@@ -16,7 +16,19 @@ function EventActionButton({ icon, label, action, otherCss })
 
 export default function EventsListEntry({ event })
 {
-  var { user, notify, selectedDay, allEvents_modifyEvents, allEvents_deleteEvents, selectedEvent, setSelectedEvent, setIsCreatingNewEvent, setShowEventModal, setModifyRepeated, setDuplicatedEvent } = useContext(GlobalContext)
+  var {
+      user,
+      notify,
+      selectedDay,
+      allEvents_modifyEvents,
+      allEvents_deleteEvents,
+      selectedEvent,
+      setSelectedEvent,
+      setIsCreatingNewEvent,
+      setShowEventModal,
+      setModifyRepeated,
+      setDuplicatedEvent
+  } = useContext(GlobalContext)
 
   const [trucateDescription, setTruncateDescription] = useState(true)
   const truncateLongText = (text, max_chars) => {

@@ -54,13 +54,13 @@ export default function EventModal() {
   const [allDay, setAllDay] = useState(false)
   const [repeated, setRepeated] = useState(false)
 
-  const [oldEndsOnDate, setOldEndsOnDate] = useState(dayjs(formData.repeatedData.endsOn))
+  const [oldEndsOnDate, setOldEndsOnDate] = useState((formData.repeated ? dayjs(formData.repeatedData.endsOn) : dayjs()))
   const [selectingEndsOn, setSelectingEndsOn] = useState(false)
 
   const daysInMonthArray = (date) => Array.from({length: dayjs(date).daysInMonth()}, (_, i) => i+1)
   const endsOnDaysChoice = () => {
-    const begin = dayjs(formData.begin)
-    const endsOnDate = dayjs(formData.repeatedData.endsOn)
+    const begin = dayjs(formData.begin);
+    const endsOnDate = formData.repeated ? dayjs(formData.repeatedData.endsOn) : dayjs();
     if (formData.repeated && formData.repeatedData.every === "week") {
       var dates = []
       let i = 1

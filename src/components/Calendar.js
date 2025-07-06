@@ -17,7 +17,23 @@ const Calendar = () => {
 
   useCheckForUser();
 
-  var { user, currentDate, calendarDate, setCalendarDate, selectedDay, setSelectedDay, showEventModal, showEventsList, setShowEventsList, allEvents, allEvents_initialize, filters, shownCalendarType, showCompletedTasks } = useContext(GlobalContext);
+  var {
+      user,
+      currentDate,
+      calendarDate,
+      setCalendarDate,
+      selectedDay,
+      setSelectedDay,
+      showEventModal,
+      showEventsList,
+      setShowEventsList,
+      allEvents,
+      allEvents_initialize,
+      filters,
+      shownCalendarType,
+      showCompletedTasks
+  } = useContext(GlobalContext);
+
   const navigate = useNavigate();
 
   const [selectingNewDate, setSelectingNewDate] = useState(false)

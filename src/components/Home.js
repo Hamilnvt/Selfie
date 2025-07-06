@@ -1,7 +1,6 @@
-//[TODO]
+// TODO
 // - Quando clicco sulla nota nella home, qual è il path in cui c'è quella nota?
 // - non funziona l'eliminazione delle note
-// - currentDate / currentTime
 
 import GlobalContext from "../context/GlobalContext.js"
 import useCheckForUser from "../hooks/useCheckForUser.js"
@@ -176,44 +175,10 @@ const EventsView = ({tasks}) => {
     )
 }
 
-const note_prova = [
-    {
-        _id: 1,
-        title: "Nota di Prova",
-        content: "Ciao sono una nota di prova :)",
-        createAt: dayjs().subtract(1, "hour"),
-        updateAt: dayjs().subtract(1, "hour")
-    },
-    {
-        _id: 2,
-        title: "La nota lunga",
-        content: "Anche io sono una nota di prova, ma decisamente più lunga, ciao Riccardo è molto divertente fare il museo con te, eccoci qui, pronti, PEFFOZZA.",
-        createAt: dayjs().subtract(1, "hour"),
-        updateAt: dayjs().subtract(30, "minute")
-    },
-    {
-        _id: 3,
-        title: "Nota corta 1",
-        content: "Nota corta 1",
-        createAt: dayjs(),
-        updateAt: dayjs()
-    },
-    {
-        _id: 4,
-        title: "Nota corta 2",
-        content: "Nota corta 2",
-        createAt: dayjs().subtract(4, "hour"),
-        updateAt: dayjs()
-    }
-]
-
 const PomodoroEntry = ({pomodoro}) => {
     const navigate = useNavigate()
 
-    const goToPomodoro = (n) => {
-        alert("TODO")
-        navigate("/pomodoro")
-    }
+    const goToPomodoro = (n) => navigate("/pomodoro");
 
     return (
         <div className={`w-screen px-3`}>
@@ -242,33 +207,6 @@ const PomodoroEntry = ({pomodoro}) => {
         </div>
     )
 }
-
-const pomodoros_prova = [
-    {
-        _id: 1,
-        title: "Studio Linguaggi",
-        from: dayjs().subtract(1, "hour"),
-        to: dayjs(),
-        cycle: {
-            n: 4,
-            do: 25,
-            pause: 5
-        },
-        comment: "Poteva andare peggio"
-    },
-    {
-        _id: 2,
-        title: "Studio Tecnologie Web",
-        from: dayjs().subtract(4, "hour"),
-        to: dayjs().subtract(2, "hour"),
-        cycle: {
-            n: 2,
-            do: 20,
-            pause: 10
-        },
-        comment: "Tanto è facile"
-    },
-]
 
 const PomodoroView = () => {
     const {user} = useContext(GlobalContext) || {};

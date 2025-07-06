@@ -5,10 +5,7 @@ export default function NoteEntry({note})
 {
     const navigate = useNavigate()
 
-    const goToNote = (n) => {
-        alert("TODO")
-        navigate("/notes")
-    }
+    const goToNote = (n) => navigate("/notes");
 
     const truncateLongText = (text, max_chars) => (text || "")?.length <= max_chars ? text : (text || "")?.slice(0, max_chars) + "..."
 

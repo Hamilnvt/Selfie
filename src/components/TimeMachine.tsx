@@ -5,9 +5,11 @@ import {background} from "../scripts/COLORS";
 import React, {useContext} from "react";
 import Header from "./Header.js";
 import GlobalContext from "../context/GlobalContext";
+import dayjs from "dayjs";
 
 export default function TimeMachine() {
     const {setCurrentTime, currentTime} = useContext(GlobalContext);
+    const {setCurrentDate, currentDate} = useContext(GlobalContext);
 
     //@ts-ignore
     const handleInputChange = (event) => {
@@ -15,6 +17,7 @@ export default function TimeMachine() {
         const date = new Date(value);
         const timestamp = date.getTime();
         setCurrentTime(timestamp);
+        setCurrentDate(dayjs(timestamp));
     };
 
     return (
