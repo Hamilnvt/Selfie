@@ -6,5 +6,6 @@ interface ImageProps extends Partial<React.CSSProperties> {
 }
 
 export const Image: React.FC<ImageProps> = ({ src, alt, ...other }) => {
+
     return <img src={src} alt={alt} style={{ ...other }} />;
 };

@@ -175,6 +175,67 @@ const EventsView = ({tasks}) => {
     )
 }
 
+export const NoteEntry = ({note}) => {
+    const navigate = useNavigate()
+
+    const goToNote = (n) => {
+        navigate(`/notes/detail/${note._id}`)
+    }
+
+    return (
+        <div className={`w-screen px-3`}>
+            <div className={`flex flex-col border ${colors.MAIN_BORDER_LIGHT} rounded-lg overflow-hidden mb-4`}
+                 style={{scrollbarWidth: "none"}}>
+                <div className={`py-2 ${colors.MAIN_BG_DARK}`}>
+                    <div className="flex flex-col items-center">
+                        <div className={`mb-1 ${colors.MAIN_TEXT_LIGHT}`}>
+                            <div className="flex items-center space-x-2">
+                                <span
+                                    className="text-xl font-bold cursor-pointer hover:underline underline-offset-4 w-fit"
+                                    onClick={goToNote}>{truncateLongText(note.title, 50)}</span>
+                            </div>
+                        </div>
+                        <div className="flex flex-col justify-center">
+                            <span className="text-center">{truncateLongText(note.content, 200)}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+const note_prova = [
+    {
+        _id: 1,
+        title: "Nota di Prova",
+        content: "Ciao sono una nota di prova :)",
+        createAt: dayjs().subtract(1, "hour"),
+        updateAt: dayjs().subtract(1, "hour")
+    },
+    {
+        _id: 2,
+        title: "La nota lunga",
+        content: "Anche io sono una nota di prova, ma decisamente più lunga, ciao Riccardo è molto divertente fare il museo con te, eccoci qui, pronti, PEFFOZZA.",
+        createAt: dayjs().subtract(1, "hour"),
+        updateAt: dayjs().subtract(30, "minute")
+    },
+    {
+        _id: 3,
+        title: "Nota corta 1",
+        content: "Nota corta 1",
+        createAt: dayjs(),
+        updateAt: dayjs()
+    },
+    {
+        _id: 4,
+        title: "Nota corta 2",
+        content: "Nota corta 2",
+        createAt: dayjs().subtract(4, "hour"),
+        updateAt: dayjs()
+    }
+]
+
 const PomodoroEntry = ({pomodoro}) => {
     const navigate = useNavigate()
 
